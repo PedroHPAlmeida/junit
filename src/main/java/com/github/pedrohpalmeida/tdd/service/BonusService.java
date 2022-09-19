@@ -1,6 +1,7 @@
 package com.github.pedrohpalmeida.tdd.service;
 
 import java.math.BigDecimal;
+import java.math.RoundingMode;
 
 import com.github.pedrohpalmeida.tdd.modelo.Funcionario;
 
@@ -11,7 +12,7 @@ public class BonusService {
 		if (valor.compareTo(new BigDecimal("1000")) > 0) {
 			valor = BigDecimal.ZERO;
 		}
-		return valor;
+		return valor.setScale(2, RoundingMode.HALF_UP);
 	}
 
 }
