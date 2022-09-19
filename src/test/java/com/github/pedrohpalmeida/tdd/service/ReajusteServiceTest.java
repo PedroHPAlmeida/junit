@@ -2,8 +2,7 @@ package com.github.pedrohpalmeida.tdd.service;
 
 import com.github.pedrohpalmeida.tdd.modelo.Desempenho;
 import com.github.pedrohpalmeida.tdd.modelo.Funcionario;
-import org.junit.jupiter.api.BeforeEach;
-import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.*;
 
 import java.math.BigDecimal;
 import java.time.LocalDate;
@@ -17,8 +16,24 @@ public class ReajusteServiceTest {
 
     @BeforeEach // Chama o método antes de cada um dos testes
     public void inicializar() {
+        System.out.println("inicio");
         reajusteService = new ReajusteService();
         funcionario = new Funcionario("Pedro", LocalDate.now(), new BigDecimal("1000"));
+    }
+
+    @AfterEach
+    public void finalizar() {
+        System.out.println("fim");
+    }
+
+    @BeforeAll
+    public static void antesDeTodos() {
+        System.out.println("Antes de todos");
+    }
+
+    @AfterAll
+    public static void depoisDeTodos() {
+        System.out.println("Depois de todos");
     }
 
     @Test
