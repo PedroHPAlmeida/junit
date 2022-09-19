@@ -1,5 +1,5 @@
 package com.github.pedrohpalmeida.tdd.modelo;
 
 public enum Desempenho {
-    A_DESEJAR
+    BOM, OTIMO, A_DESEJAR
 }
