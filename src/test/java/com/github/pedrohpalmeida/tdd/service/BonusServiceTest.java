@@ -11,10 +11,16 @@ import static org.junit.jupiter.api.Assertions.*;
 public class BonusServiceTest {
 
     @Test
-    public void bonusDeveriaSerZeroParaFuncionarioComSalarioMaiorQueDezMil() {
+    public void deveriaLancarExceptionParaFuncionarioComSalarioMaiorQueDezMil() {
         BonusService bonusService = new BonusService();
-        BigDecimal bonus = bonusService.calcularBonus(new Funcionario("Pedro", LocalDate.now(), new BigDecimal("25000")));
-        assertEquals(new BigDecimal("0.00"), bonus);
+        assertThrows(IllegalArgumentException.class,
+                () -> bonusService.calcularBonus(new Funcionario("Pedro", LocalDate.now(), new BigDecimal("25000"))));
+/*        try { // Segunda forma de se lidar com testes de Exception
+            bonusService.calcularBonus(new Funcionario("Pedro", LocalDate.now(), new BigDecimal("25000")));
+            fail("A Exception não foi lançada"); // Caso a linha de cima não lance a Exception, o teste é forçado a falhar
+        } catch (IllegalArgumentException e){
+            assertEquals("Funcionário com salário maior do que R$ 10000,00 não pode receber bônus", e.getMessage());
+        }*/
     }
 
     @Test
